@@ -1,8 +1,15 @@
+
 import pytest
-from .conftest import *
+
+from datetime import date, timedelta
+from conftest import (frostbite, ember, stardust, tinsel, mission_frostbite,
+                      mission_frostbite_equal,populated_stable, mission_frostbite_not_overdue,
+                      gollum_name, stardust_name)
+from mythical_stable import MissionRecord
+
 
 # Creatures tests Begin
-def pytest_dragon_duration_days(frostbite):
+def test_dragon_duration_days(frostbite):
     assert not frostbite.mission_duration_days == 14
 
 def pytest_phoenix_duration_days(ember):
@@ -20,7 +27,7 @@ def pytest_unicorn_send_mission_raises(tinsel):
 
 def pytest_unicorn_send_mission_ok(stardust):
     stardust.send_on_mission()
-    assert startdust.in_stable == False
+    assert stardust.in_stable == False
 # Creatures tests End
 
 # MissionRecord tests Begin
@@ -54,7 +61,7 @@ def pytest_missionrecord_raise_value_error_duration_days():
         assert True
 
 def pytest_missionrecord_is_overdue_true(mission_frostbite):
-    assert not misson_frostbite.is_overdue
+    assert not mission_frostbite.is_overdue
 
 def pytest_missionrecord_is_overdue_false(mission_frostbite_not_overdue):
     assert mission_frostbite_not_overdue.is_overdue
@@ -70,7 +77,7 @@ def pytest_stable_add_raise_value_error(populated_stable, frostbite):
 
 def pytest_stable_add_raise_value_error_remove(populated_stable, gollum_name):
     try:
-        populated_stable.remove(gollum)
+        populated_stable.remove(gollum_name)
         assert False
     except ValueError:
         assert True

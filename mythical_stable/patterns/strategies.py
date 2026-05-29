@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from core.Creatures import Creature
+from mythical_stable.core.creatures import Creature
+from mythical_stable.protocols import SortStrategy
 
-
-class SortStrategy(ABC):
-    @abstractmethod
-    def sort(self, creatures:list[Creature]) -> list[Creature]: ...
+# class SortStrategy(ABC):
+#     @abstractmethod
+#     def sort(self, creatures:list[Creature]) -> list[Creature]: ...
 
 class SortByPower(SortStrategy):
     def sort(self, creatures:list[Creature]) -> list[Creature]:

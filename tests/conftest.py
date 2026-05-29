@@ -1,5 +1,9 @@
 import pytest
+
 from mythical_stable.core import Dragon, Phoenix, Unicorn, Stable
+from mythical_stable import MissionRecord
+from datetime import date, timedelta
+
 
 @pytest.fixture
 def frostbite():
@@ -34,7 +38,7 @@ def mission_frostbite_equal():
         departure_date=date.today(),
         duration_days=3,
         notes="Friday",
-        active=false)
+        active=False)
 
 def mission_frostbite_not_overdue():
     return MissionRecord(

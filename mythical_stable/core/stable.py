@@ -1,6 +1,7 @@
 from typing import Iterator
 
-from core.creatures import Creature
+from mythical_stable.protocols import SortStrategy
+from mythical_stable.core.creatures import Creature
 
 
 class Stable:
@@ -55,6 +56,9 @@ class Stable:
 
     def available_by_power(self) -> StableIterator:
         return StableIterator(self._creatures)
+
+    def sorted(self,strategy:SortStrategy) -> list[Creature]:
+        return strategy.sort(self._creatures)
 
 
 class StableIterator:

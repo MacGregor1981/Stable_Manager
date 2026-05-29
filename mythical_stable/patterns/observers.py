@@ -1,3 +1,7 @@
+from datetime import datetime
+from typing import Callable
+
+
 class EventBus:
     def __init__(self):
         self._listeners: dict[str, list[Callable]] = {}
